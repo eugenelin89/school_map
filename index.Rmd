@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(data.table)
 ```
 
-Recent enrollment information for public and private elementary and secondary schools in British Columbia.  
+Recent enrolment information for public and private elementary and secondary schools in British Columbia.  
 Data Source: https://catalogue.data.gov.bc.ca/dataset/school-enrollment  
 
 
@@ -22,6 +22,6 @@ df['TOTAL_ELM'] = df['ELMNTRY_ST']+df['SCNDRY_SCT']
 library(leaflet)
 leaflet(df) %>% 
   addTiles() %>%
-  addCircleMarkers(clusterOptions = markerClusterOptions(), popup=paste(df$SCHOOL_NM,", Total Enrollment: ",df$TOTAL_ELM), weight=1, radius = sqrt(df$TOTAL_ELM) * 3, color = ifelse(df$ELMNTRY_ST>0, "green", "red") ) %>%
+  addCircleMarkers(clusterOptions = markerClusterOptions(), popup=paste(df$SCHOOL_NM,", Total Enrolment: ",df$TOTAL_ELM), weight=1, radius = sqrt(df$TOTAL_ELM) * 3, color = ifelse(df$ELMNTRY_ST>0, "green", "red") ) %>%
   addLegend(labels = c("Secondary Schools","Elementary Schools"), colors = c("red", "green"))
 ```
